@@ -1,5 +1,5 @@
 <div class="container">
-<form [FormGroup]="addForm" (ngSubmit)="add(addForm.value)">
+<form [formGroup]="addForm" (ngSubmit)="add(addForm.value)">
 <div>
     <label>Id</label>
     <input FormControlName="id" class="form-control" type="text">
