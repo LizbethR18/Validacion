@@ -1,16 +1,17 @@
 <div class="container">
 <form [formGroup]="addForm" (ngSubmit)="add(addForm.value)">
 <div>
+    <br><br><br>
     <label>Id</label>
     <input FormControlName="id" class="form-control" type="text">
-    <div *ngIf="addForm.get('id').hasError('required') && addForm.get('id').touched">
+    <div class="error" *ngIf="addForm.get('id').hasError('required') && addForm.get('id').touched">
         Campo requerido, Puede ingresar un ID mayor o igual a 100 y menor o igual a 105
     </div>
 </div>
 <div>
     <label>Nombre Completo</label>
     <input FormControlName="nombre" class="form-control" type="text">
-    <div *ngIf="addForm.get('nombre').hasError('required') && addForm.get('nombre').touched">
+    <div class="error" *ngIf="addForm.get('nombre').hasError('required') && addForm.get('nombre').touched">
         Campo requerido, Ingrese su nombre completo
     </div>
 </div>
@@ -24,17 +25,27 @@
         <input FormControlName="genero" class="form-check-input" type="radio" value="M">
         <label class="form-check-label" for="inlineRadio2">Masculino</label>
       </div>
-      <div *ngIf=" addForm.get('genero').hasError('required')" >
-        Campo es requerido, Seleccione su género
+      <div class="error" *ngIf="addForm.get('genero').hasError('required')">
+        Campo requerido, Seleccione su género
     </div>
 </div>
 <div>
     <label>Fecha de Nacimiento</label>
     <input FormControlName="fecha" class="form-control" type="number">
-    <div *ngIf="addForm.get('fecha').hasError('required') && addForm.get('fecha').touched">
+    <div class="error" *ngIf="addForm.get('fecha').hasError('required') && addForm.get('fecha').touched">
         Campo requerido, Puede ingresar un año mayor o igual a 1980 y menor o igual a 2010
     </div>
-</div>
+</div><br>
 <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-primary">Guardar</button>
 </form>
+</div>
+<div class="container" *ngIf="datos.length>0">
+    <div *ngFor="let item of datos">
+    <div>
+        <p>Nombre: {{item.nombre}}</p>
+        <p>Id: {{item.id}}</p>
+        <p>Género: {{item.genero}}</p>
+        <p>Fecha de Nacimiento: {{item.fecha}}</p>
+    </div>
+    </div>
 </div>
