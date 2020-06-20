@@ -17,6 +17,7 @@
 </div>
 <div>
     <label>Género</label>
+    <div>
     <div class="form-check form-check-inline">
         <input FormControlName="genero" class="form-check-input" type="radio" value="F">
         <label class="form-check-label" for="inlineRadio1">Femenino</label>
@@ -25,8 +26,9 @@
         <input FormControlName="genero" class="form-check-input" type="radio" value="M">
         <label class="form-check-label" for="inlineRadio2">Masculino</label>
       </div>
-      <div class="error" *ngIf="addForm.get('genero').hasError('required')">
+      <div class="error" *ngIf="addForm.get('genero').hasError('required') && addForm.get('genero').touched">
         Campo requerido, Seleccione su género
+    </div>
     </div>
 </div>
 <div>
